@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://chbkapot1xs03"]
+
+[node name="RepairMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+pivot_offset = Vector2(317, 82)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 200.0
+offset_right = 773.0
+offset_bottom = 424.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -4.0
+offset_right = 328.0
+offset_bottom = 226.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.39215687, 0.5882353, 1, 1)
+text = "Réparations disponibles"
+horizontal_alignment = 1
+
+[node name="RepairList" type="ItemList" parent="Panel/VBoxContainer"]
+layout_mode = 2
+select_mode = 1
+max_text_lines = 10
+auto_width = true
+auto_height = true
+
+[node name="RepairCloseButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7176471, 0, 0, 1)
+text = "Fermer"

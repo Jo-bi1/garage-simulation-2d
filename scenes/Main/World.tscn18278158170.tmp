@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://bsd5i0q5trpc8"]
+
+[ext_resource type="Script" uid="uid://dplt7ix6k24c0" path="res://scenes/Main/world.gd" id="1_5mkab"]
+[ext_resource type="PackedScene" uid="uid://dnues1ss23cla" path="res://Entities/Player/Player.tscn" id="1_sfbi2"]
+[ext_resource type="PackedScene" uid="uid://dbov4422ya3ru" path="res://Entities/Interactables/RepairSlot.tscn" id="2_7i2yf"]
+[ext_resource type="PackedScene" uid="uid://d0cqvolbwhkss" path="res://scenes/MapSol.tscn" id="3_h3l42"]
+[ext_resource type="PackedScene" uid="uid://bedqawgck2twe" path="res://Entities/Interactables/WaitingSlot.tscn" id="3_hsjn6"]
+[ext_resource type="PackedScene" uid="uid://chbkapot1xs03" path="res://Entities/Interactables/RepairMenu.tscn" id="3_i6gei"]
+[ext_resource type="PackedScene" uid="uid://sqrvgl25aale" path="res://scenes/ui/SidePanel.tscn" id="4_ip0uq"]
+[ext_resource type="PackedScene" uid="uid://cxkvh8jjdc0rk" path="res://Entities/Vehicles/Car.tscn" id="4_u4a6f"]
+[ext_resource type="PackedScene" uid="uid://cfc0kmhf2fdq1" path="res://scenes/ui/BoutonVoitures.tscn" id="5_6popj"]
+[ext_resource type="PackedScene" uid="uid://dvj537faoy03o" path="res://scenes/ui/CarMenu.tscn" id="8_i6gei"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sfbi2"]
+normal = Vector2(0.012657213, 0.99991983)
+distance = -110.33418
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7i2yf"]
+distance = -310.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hsjn6"]
+normal = Vector2(0.99996877, 0.007904891)
+distance = -567.5354
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u4a6f"]
+normal = Vector2(-0.9998927, 0.014650443)
+distance = -578.02704
+
+[node name="World" type="Node2D"]
+position = Vector2(562, 303)
+script = ExtResource("1_5mkab")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressSlot1" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+offset_left = 236.0
+offset_top = 131.0
+offset_right = 456.0
+offset_bottom = 158.0
+
+[node name="ProgressSlot2" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+offset_left = 618.0
+offset_top = 129.0
+offset_right = 839.0
+offset_bottom = 156.0
+
+[node name="CarMenu" parent="CanvasLayer" instance=ExtResource("8_i6gei")]
+visible = false
+offset_left = 42.0
+offset_top = 193.0
+offset_right = 42.0
+offset_bottom = 193.0
+
+[node name="RepairMenu" parent="CanvasLayer" instance=ExtResource("3_i6gei")]
+visible = false
+
+[node name="SidePanel" parent="CanvasLayer" instance=ExtResource("4_ip0uq")]
+visible = false
+
+[node name="BoutonVoiture" parent="CanvasLayer" instance=ExtResource("5_6popj")]
+offset_left = 983.0
+offset_top = 544.0
+offset_right = 1091.0
+offset_bottom = 607.0
+
+[node name="MapSol" parent="." instance=ExtResource("3_h3l42")]
+position = Vector2(-564, -304)
+
+[node name="Slot_1" parent="." instance=ExtResource("2_7i2yf")]
+position = Vector2(-220, -83)
+
+[node name="Slot_2" parent="." instance=ExtResource("2_7i2yf")]
+position = Vector2(159, -81)
+slot_id = 2
+
+[node name="Player" parent="." instance=ExtResource("1_sfbi2")]
+position = Vector2(-550, -290)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(5, 35)
+
+[node name="CollisionHaut" type="CollisionShape2D" parent="Walls"]
+position = Vector2(12, -226)
+shape = SubResource("WorldBoundaryShape2D_sfbi2")
+
+[node name="CollisionBas" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_7i2yf")
+
+[node name="CollisionDroite" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_hsjn6")
+
+[node name="CollisionGauche" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_u4a6f")
+
+[node name="WaitingSlot" parent="." instance=ExtResource("3_hsjn6")]
+position = Vector2(429, 116)
+
+[node name="Car" parent="." instance=ExtResource("4_u4a6f")]
+position = Vector2(-147, -326)

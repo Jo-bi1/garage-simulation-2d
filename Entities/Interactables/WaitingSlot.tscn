@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bedqawgck2twe"]
+
+[ext_resource type="Texture2D" uid="uid://d2ujs6cn3cnp6" path="res://Entities/Interactables/Slot.png" id="1_2sqbr"]
+[ext_resource type="Script" uid="uid://c75fv6yh7yv4a" path="res://Entities/Interactables/waiting_slot.gd" id="1_ohn5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjox4"]
+size = Vector2(108.375, 109)
+
+[node name="WaitingSlot" type="Area2D"]
+position = Vector2(627, 276)
+script = ExtResource("1_ohn5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(13.999989, -2.0000076)
+scale = Vector2(0.80120474, 0.7074467)
+texture = ExtResource("1_2sqbr")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 5.5)
+shape = SubResource("RectangleShape2D_xjox4")
+
+[node name="SnapPoint" type="Marker2D" parent="."]
+position = Vector2(7, 9)

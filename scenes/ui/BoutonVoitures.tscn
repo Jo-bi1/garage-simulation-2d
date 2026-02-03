@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cfc0kmhf2fdq1"]
+
+[node name="BoutonVoiture" type="Button"]
+offset_left = 988.0
+offset_top = 538.0
+offset_right = 1087.0
+offset_bottom = 604.0
+text = "🚗 Voitures"

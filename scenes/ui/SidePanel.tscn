@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://sqrvgl25aale"]
+
+[sub_resource type="SystemFont" id="SystemFont_swuso"]
+font_names = PackedStringArray("Poppins")
+font_weight = 999
+
+[node name="SidePanel" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 62.0
+offset_right = 902.0
+offset_bottom = 610.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 643.0
+offset_bottom = 552.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.89411765, 0.7607843, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_swuso")
+text = "🔧 À réparer"
+horizontal_alignment = 1
+
+[node name="CarListToRepair" type="ItemList" parent="Panel/VBoxContainer"]
+layout_mode = 2
+select_mode = 1
+auto_width = true
+auto_height = true
+
+[node name="label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "💰 Attente paiement"
+horizontal_alignment = 1
+
+[node name="CarListWaiting" type="ItemList" parent="Panel/VBoxContainer"]
+layout_mode = 2
+select_mode = 1
+auto_width = true
+auto_height = true

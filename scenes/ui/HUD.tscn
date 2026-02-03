@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bo3lj0n3esvif"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 172.0
+offset_right = 694.0
+offset_bottom = 551.0
+
+[node name="CarPanel" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CarPanel"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/CarPanel"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+
+[node name="CarPanel2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CarPanel2"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/CarPanel2"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2
+
+[node name="CarPanel3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CarPanel3"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/CarPanel3"]
+custom_minimum_size = Vector2(200, 45)
+layout_mode = 2

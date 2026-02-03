@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsqoyddoemf8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrrb4"]
+
+[sub_resource type="Gradient" id="Gradient_r8hcy"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3pxe2"]
+gradient = SubResource("Gradient_r8hcy")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jwej7"]
+texture = SubResource("GradientTexture2D_3pxe2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsfm0"]
+
+[node name="GameUi" type="CanvasLayer"]
+
+[node name="RepairMenu" type="Panel" parent="."]
+offset_left = 371.0
+offset_top = 130.0
+offset_right = 735.0
+offset_bottom = 552.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RepairMenu"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 14.0
+offset_right = 329.0
+offset_bottom = 442.0
+
+[node name="Button" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button2" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button3" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button4" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button5" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button6" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button7" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="Button8" type="Button" parent="RepairMenu/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hrrb4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_jwej7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xsfm0")
+text = "Frein"
+
+[node name="WaitingList" type="Panel" parent="."]
+offset_left = 892.0
+offset_top = 5.0
+offset_right = 1151.0
+offset_bottom = 390.0

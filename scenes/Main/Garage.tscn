@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cug68ggechka2"]
+
+[node name="Garage" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="CarsManager" type="Node2D" parent="."]
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 645.0

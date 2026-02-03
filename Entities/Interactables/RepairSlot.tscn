@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbov4422ya3ru"]
+
+[ext_resource type="Script" uid="uid://cmjat2tfevakx" path="res://Entities/Interactables/RepairSlot.gd" id="1_5fpi8"]
+[ext_resource type="Texture2D" uid="uid://d2ujs6cn3cnp6" path="res://Entities/Interactables/Slot.png" id="1_xjox4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xjox4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjox4"]
+size = Vector2(110, 113)
+
+[node name="RepairSlot" type="Area2D"]
+position = Vector2(578, 331)
+script = ExtResource("1_5fpi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-8, 1.9999847)
+scale = Vector2(0.7831325, 0.6914894)
+texture = ExtResource("1_xjox4")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_xjox4")
+position = Vector2(2, 10)
+rotation = -6.2831855
+shape = SubResource("RectangleShape2D_xjox4")
+
+[node name="SpawnPoint" type="Marker2D" parent="."]

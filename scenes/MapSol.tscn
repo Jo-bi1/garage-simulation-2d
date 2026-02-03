@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0cqvolbwhkss"]
+
+[ext_resource type="Texture2D" uid="uid://x1bvah2ufa8p" path="res://assets/garage.png" id="1_66pl7"]
+
+[sub_resource type="TileSet" id="TileSet_0hk1j"]
+
+[node name="MapSol" type="TileMap"]
+tile_set = SubResource("TileSet_0hk1j")
+format = 2
+
+[node name="Garage" type="Sprite2D" parent="."]
+position = Vector2(576.75, 324.5)
+scale = Vector2(1.1365441, 0.73410404)
+texture = ExtResource("1_66pl7")
