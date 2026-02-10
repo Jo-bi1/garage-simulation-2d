@@ -3,6 +3,7 @@ extends Node2D
 @onready var player        = $Player
 @onready var slot1         = $Slot_1
 @onready var slot2         = $Slot_2
+@onready var slot3         = $Slot_3
 @onready var waiting_slot  = $WaitingSlot
 
 @onready var side_panel       = $CanvasLayer/SidePanel
@@ -16,8 +17,11 @@ extends Node2D
 
 @onready var progress1     = $CanvasLayer/ProgressSlot1
 @onready var progress2     = $CanvasLayer/ProgressSlot2
+@onready var progress3     = $CanvasLayer/ProgressSlot3
+
 @onready var label_slot1   = $CanvasLayer/LabelSlot1
 @onready var label_slot2   = $CanvasLayer/LabelSlot2
+@onready var label_slot3   = $CanvasLayer/LabelSlot3
 @onready var btn_voitures  = $CanvasLayer/BoutonVoiture
 
 var interaction_label: Label
@@ -40,7 +44,7 @@ var repair_blocked = false
 var _auth: Dictionary = {}
 
 var refresh_timer: Timer
-const REFRESH_INTERVAL: float = 10.0
+const REFRESH_INTERVAL: float = 2.0
 
 # ---------------------------------------------------------
 # INIT
@@ -79,10 +83,13 @@ func _ready() -> void:
 
 	progress1.value = 0
 	progress2.value = 0
+	progress3.value = 0
 	progress1.visible = false
 	progress2.visible = false
+	progress3.visible = false
 	label_slot1.visible = false
 	label_slot2.visible = false
+	label_slot3.visible = false
 
 	_update_car_list()
 	_update_car_count()
@@ -351,6 +358,8 @@ func _get_slot_with_player():
 		return slot1
 	if slot2 and slot2.player_inside and str(slot2.current_car_id) != "":
 		return slot2
+	if slot3 and slot3.player_inside and str(slot3.current_car_id) != "":
+		return slot3
 	return null
 
 # ---------------------------------------------------------
@@ -391,8 +400,10 @@ func _update_car_list() -> void:
 			if slot1: slot1_id_str = str(slot1.current_car_id)
 			var slot2_id_str: String = ""
 			if slot2: slot2_id_str = str(slot2.current_car_id)
+			var slot3_id_str: String = ""
+			if slot3: slot3_id_str = str(slot3.current_car_id)
 
-			if slot1_id_str == car_id_str or slot2_id_str == car_id_str:
+			if slot1_id_str == car_id_str or slot2_id_str == car_id_str or slot3_id_str == car_id_str:
 				icon_status = "🔧"
 
 			var txt = "%s - %s (%d à faire) %s" % [car_id_str, info.get("name", "?"), reps.size(), icon_status]
@@ -432,7 +443,7 @@ func _handle_car_selection(list: ItemList, index: int) -> void:
 	# VÉRIFICATION : La voiture est-elle déjà dans un slot ?
 	# Assurer la comparaison String vs String
 	var car_id_str = str(car_id)
-	if (slot1 and str(slot1.current_car_id) == car_id_str) or (slot2 and str(slot2.current_car_id) == car_id_str):
+	if (slot1 and str(slot1.current_car_id) == car_id_str) or (slot2 and str(slot2.current_car_id) == car_id_str) or (slot3 and str(slot3.current_car_id) == car_id_str):
 		print("❌ Cette voiture est déjà dans un garage !")
 		# Optionnel : Faire clignoter le slot ou feedback visuel
 		return
@@ -451,6 +462,8 @@ func _get_free_slot():
 		return slot1
 	if slot2 and str(slot2.current_car_id) == "" and not slot2.is_busy:
 		return slot2
+	if slot3 and str(slot3.current_car_id) == "" and not slot3.is_busy:
+		return slot3
 	return null
 
 # ---------------------------------------------------------
@@ -553,8 +566,18 @@ func _start_repair_on_slot(slot, rep_data: Dictionary) -> void:
 	slot.is_busy = true
 	slot.repair_type = repair_type
 
-	var bar: ProgressBar = progress1 if slot == slot1 else progress2
-	var label: Label = label_slot1 if slot == slot1 else label_slot2
+	var bar: ProgressBar
+	var label: Label
+	
+	if slot == slot1:
+		bar = progress1
+		label = label_slot1
+	elif slot == slot2:
+		bar = progress2
+		label = label_slot2
+	else:
+		bar = progress3
+		label = label_slot3
 	
 	bar.min_value = 0
 	bar.max_value = 100
@@ -600,7 +623,11 @@ func _on_repair_finished(slot, car_id: String, rep_data: Dictionary, bar: Progre
 	bar.value = 0
 	bar.visible = false
 	
-	var label: Label = label_slot1 if slot == slot1 else label_slot2
+	var label: Label
+	if slot == slot1: label = label_slot1
+	elif slot == slot2: label = label_slot2
+	else: label = label_slot3
+	
 	label.visible = false
 	
 	timer.queue_free()

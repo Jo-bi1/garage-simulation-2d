@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsd5i0q5trpc8"]
+[gd_scene load_steps=18 format=3 uid="uid://bsd5i0q5trpc8"]
 
 [ext_resource type="Script" uid="uid://dplt7ix6k24c0" path="res://scenes/Main/world.gd" id="1_5mkab"]
 [ext_resource type="PackedScene" uid="uid://dnues1ss23cla" path="res://Entities/Player/Player.tscn" id="1_sfbi2"]
@@ -26,6 +26,14 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0.4, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3"]
+bg_color = Color(1, 0.5, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.4, 0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sfbi2"]
 normal = Vector2(0.012657213, 0.99991983)
@@ -88,6 +96,26 @@ theme_override_font_sizes/font_size = 16
 text = "Réparation en cours..."
 horizontal_alignment = 1
 
+[node name="ProgressSlot3" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+offset_left = 198.0
+offset_top = 356.0
+offset_right = 498.0
+offset_bottom = 396.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_3")
+
+[node name="LabelSlot3" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 206.0
+offset_top = 327.0
+offset_right = 506.0
+offset_bottom = 350.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Réparation en cours..."
+horizontal_alignment = 1
+
 [node name="CarMenu" parent="CanvasLayer" instance=ExtResource("8_i6gei")]
 visible = false
 offset_left = 42.0
@@ -133,6 +161,14 @@ position = Vector2(159, -81)
 slot_id = 2
 
 [node name="Car" parent="Slot_2" instance=ExtResource("4_u4a6f")]
+visible = false
+position = Vector2(-1, 11)
+
+[node name="Slot_3" parent="." instance=ExtResource("2_7i2yf")]
+position = Vector2(-217, 148)
+slot_id = 3
+
+[node name="Car" parent="Slot_3" instance=ExtResource("4_u4a6f")]
 visible = false
 position = Vector2(-1, 11)
 
