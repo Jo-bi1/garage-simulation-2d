@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxkvh8jjdc0rk"]
+[gd_scene load_steps=5 format=3 uid="uid://cxkvh8jjdc0rk"]
 
 [ext_resource type="Script" uid="uid://sge450lanbwg" path="res://Entities/Vehicles/Car.gd" id="1_d7hoy"]
 [ext_resource type="Texture2D" uid="uid://c83vn00nmlvm" path="res://Entities/Vehicles/cars-spritesheet.png" id="1_kpch0"]
@@ -6,14 +6,26 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7hoy"]
 size = Vector2(59, 123)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1kfaf"]
+
 [node name="Car" type="Area2D"]
+position = Vector2(549, 283)
+collision_layer = 2
 script = ExtResource("1_d7hoy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(582, 305)
+position = Vector2(2, 3)
 texture = ExtResource("1_kpch0")
 hframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(582.5, 305.5)
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_d7hoy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-5, -3)
+physics_material_override = SubResource("PhysicsMaterial_1kfaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(7, 7)
 shape = SubResource("RectangleShape2D_d7hoy")

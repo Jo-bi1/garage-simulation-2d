@@ -97,7 +97,7 @@ func collection(path : String) -> FirestoreCollection:
 ## @args query
 ## @arg-types FirestoreQuery
 ## @return Array[FirestoreDocument]
-func query(query : FirestoreQuery) -> Array:
+func query(query : FirestoreQuery):
 	if query.aggregations.size() > 0:
 		Firebase._printerr("Aggregation query sent with normal query call: " + str(query))
 		return []
@@ -196,9 +196,13 @@ func _pooled_request(task : FirestoreTask) -> void:
 		if result[0] != 1:
 			_check_auth_error(result[0], result[1])
 		Firebase._print("Client connected as Anonymous")
+		Firebase._print("DEBUG: auth after login: " + str(auth))
 
 	if not Firebase.emulating:
-		task._headers = PackedStringArray([_AUTHORIZATION_HEADER + auth.idtoken])
+		if auth and auth.has("idtoken"):
+			task._headers = PackedStringArray([_AUTHORIZATION_HEADER + auth.idtoken])
+		else:
+			Firebase._print("Request issued without Authorization header (unauthenticated)")
 
 	var	http_request = HTTPRequest.new()
 	http_request.timeout = 5

@@ -3,6 +3,7 @@
 [sub_resource type="SystemFont" id="SystemFont_swuso"]
 font_names = PackedStringArray("Poppins")
 font_weight = 999
+subpixel_positioning = 0
 
 [node name="SidePanel" type="Control"]
 layout_mode = 3

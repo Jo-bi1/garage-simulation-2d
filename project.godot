@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="GarageSimulation3D"
-run/main_scene="uid://30ddlih3kece"
+run/main_scene="res://scenes/ui/StartMenu.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 Events="*res://scripts/Events.gd"
+Globals="*res://Entities/Globals.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [editor_plugins]
 
