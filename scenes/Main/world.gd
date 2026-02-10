@@ -16,6 +16,8 @@ extends Node2D
 
 @onready var progress1     = $CanvasLayer/ProgressSlot1
 @onready var progress2     = $CanvasLayer/ProgressSlot2
+@onready var label_slot1   = $CanvasLayer/LabelSlot1
+@onready var label_slot2   = $CanvasLayer/LabelSlot2
 @onready var btn_voitures  = $CanvasLayer/BoutonVoiture
 
 var interaction_label: Label
@@ -79,6 +81,8 @@ func _ready() -> void:
 	progress2.value = 0
 	progress1.visible = false
 	progress2.visible = false
+	label_slot1.visible = false
+	label_slot2.visible = false
 
 	_update_car_list()
 	_update_car_count()
@@ -96,7 +100,9 @@ func _init_firebase_and_load_data() -> void:
 	Firebase.Auth.login_anonymous()
 	var auth_result = await Firebase.Auth.auth_request
 	
-	if auth_result[0] == 1:  # Succès
+	var result_code = auth_result[0]
+	# Cast to string safely for comparison to avoid 'String' vs 'int' type errors
+	if str(result_code) == "1":  # Succès
 		print("✅ [DEBUG] Firebase Auth réussi, chargement des données...")
 		await _refresh_all_cars()
 	else:
@@ -424,7 +430,9 @@ func _handle_car_selection(list: ItemList, index: int) -> void:
 	var car_id = list.get_item_metadata(index) # car_id est String via metadata
 
 	# VÉRIFICATION : La voiture est-elle déjà dans un slot ?
-	if (slot1 and slot1.current_car_id == car_id) or (slot2 and slot2.current_car_id == car_id):
+	# Assurer la comparaison String vs String
+	var car_id_str = str(car_id)
+	if (slot1 and str(slot1.current_car_id) == car_id_str) or (slot2 and str(slot2.current_car_id) == car_id_str):
 		print("❌ Cette voiture est déjà dans un garage !")
 		# Optionnel : Faire clignoter le slot ou feedback visuel
 		return
@@ -546,10 +554,17 @@ func _start_repair_on_slot(slot, rep_data: Dictionary) -> void:
 	slot.repair_type = repair_type
 
 	var bar: ProgressBar = progress1 if slot == slot1 else progress2
+	var label: Label = label_slot1 if slot == slot1 else label_slot2
+	
 	bar.min_value = 0
 	bar.max_value = 100
 	bar.value = 0
 	bar.visible = true
+	
+	# Récupérer le label propre (avec majuscule si possible)
+	var label_text = global_info.get("label", repair_type.capitalize())
+	label.text = "Réparation : " + label_text
+	label.visible = true
 
 	print("⏱ Démarrage réparation ", repair_type, " duration ", duration)
 
@@ -584,6 +599,10 @@ func _on_repair_finished(slot, car_id: String, rep_data: Dictionary, bar: Progre
 	slot.repair_type = ""
 	bar.value = 0
 	bar.visible = false
+	
+	var label: Label = label_slot1 if slot == slot1 else label_slot2
+	label.visible = false
+	
 	timer.queue_free()
 
 	if repairs_left.is_empty():

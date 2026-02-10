@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsd5i0q5trpc8"]
+[gd_scene load_steps=17 format=3 uid="uid://bsd5i0q5trpc8"]
 
 [ext_resource type="Script" uid="uid://dplt7ix6k24c0" path="res://scenes/Main/world.gd" id="1_5mkab"]
 [ext_resource type="PackedScene" uid="uid://dnues1ss23cla" path="res://Entities/Player/Player.tscn" id="1_sfbi2"]
@@ -10,6 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://cxkvh8jjdc0rk" path="res://Entities/Vehicles/Car.tscn" id="4_u4a6f"]
 [ext_resource type="PackedScene" uid="uid://cfc0kmhf2fdq1" path="res://scenes/ui/BoutonVoitures.tscn" id="5_6popj"]
 [ext_resource type="PackedScene" uid="uid://dvj537faoy03o" path="res://scenes/ui/CarMenu.tscn" id="8_i6gei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(0.2, 0.8, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.6, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.2, 0.6, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.4, 0.8, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sfbi2"]
 normal = Vector2(0.012657213, 0.99991983)
@@ -34,17 +50,43 @@ script = ExtResource("1_5mkab")
 
 [node name="ProgressSlot1" type="ProgressBar" parent="CanvasLayer"]
 visible = false
-offset_left = 236.0
-offset_top = 131.0
-offset_right = 456.0
-offset_bottom = 158.0
+offset_left = 200.0
+offset_top = 120.0
+offset_right = 500.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_1")
+
+[node name="LabelSlot1" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 200.0
+offset_top = 95.0
+offset_right = 500.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Réparation en cours..."
+horizontal_alignment = 1
 
 [node name="ProgressSlot2" type="ProgressBar" parent="CanvasLayer"]
 visible = false
-offset_left = 618.0
-offset_top = 129.0
-offset_right = 839.0
-offset_bottom = 156.0
+offset_left = 580.0
+offset_top = 120.0
+offset_right = 880.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/fill = SubResource("StyleBoxFlat_2")
+
+[node name="LabelSlot2" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 580.0
+offset_top = 95.0
+offset_right = 880.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "Réparation en cours..."
+horizontal_alignment = 1
 
 [node name="CarMenu" parent="CanvasLayer" instance=ExtResource("8_i6gei")]
 visible = false
